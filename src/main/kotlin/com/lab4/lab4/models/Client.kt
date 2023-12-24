@@ -9,11 +9,11 @@ import jakarta.persistence.Id
 @Entity(name = "clients")
 data class Client(
     @Column(name = "name")
-    override val name: String,
+    override var name: String,
     @Column(name = "phonenumber")
-    override val phoneNumber: String,
+    override var phoneNumber: String,
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    override val id: Long
-) : IClient
+    override var id: Long = 0
+) : IClient { constructor() : this("", "") }
